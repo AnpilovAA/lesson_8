@@ -58,7 +58,7 @@ def map_html(my_coord: tuple, nearest_5: list):
 
 
 if __name__ == "__main__":
-    with open('coffee.json', "r") as read_json:
+    with open('coffee.json', "r", encoding='cp1251') as read_json:
         coffee_json = read_json.read()
         coffee = loads(coffee_json)
     coffee_houses = get_all_info_coffee(coffee)
