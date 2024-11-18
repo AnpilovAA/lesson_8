@@ -22,7 +22,6 @@ def get_all_info_coffee(all_info_coffee: dict) -> list:
 
 def define_my_coordinates() -> tuple:
     longitude_luntitude = fetch_coordinates(KEY, input("Гдк вы находитесь?: "))
-    print("Ваши координаты: ", longitude_luntitude)
     return longitude_luntitude
 
 
@@ -47,12 +46,26 @@ def coffee_near_me(coffee_houses_with_distance):
 
 def map_html(my_coord: tuple, nearest_5: list):
     map = Map(my_coord, zoom_start=15)
+    Marker(
+        location=[my_coord[0], my_coord[1]],
+        popup="Me",
+        icon=Icon(
+            icon='person',
+            icon_color='#f3f6f4',
+            prefix='fa'
+        )
+    ).add_to(map)
     for coffee_house in nearest_5:
         Marker(
-            location=[coffee_house["latitude"], coffee_house["longitude"]],
-            tooltip="Click me",
-            popup=coffee_house['title'],
-            icon=Icon(icon='glass')
+                location=[coffee_house["latitude"], coffee_house["longitude"]],
+                tooltip="Click me",
+                popup=coffee_house['title'],
+                icon=Icon(
+                    color='black',
+                    icon_color='#f3f6f4',
+                    icon='hamburger',
+                    prefix='fa'
+                )
         ).add_to(map)
     map.save("Coffee_map.html")
 
