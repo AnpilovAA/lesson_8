@@ -40,7 +40,7 @@ def coffee_near_me(coffee_houses_with_distance):
 
 
 def map_html(my_coord: tuple, nearest_5: list):
-    map = Map(my_coord, zoom_start=15)
+    map = Map(my_coord, zoom_start=16)
     Marker(
         location=[my_coord[0], my_coord[1]],
         popup="Me",
@@ -69,9 +69,9 @@ if __name__ == "__main__":
     with open('coffee.json', "r", encoding='cp1251') as read_json:
         coffee = load(read_json)
     coffee_houses = get_all_info_coffee(coffee)
-    my_coordinates = fetch_coordinates(KEY, input("Гдк вы находитесь?: "))
+    my_coordinates = fetch_coordinates(KEY, input("Где вы находитесь?: "))
     coffee_with_distance = combine_data(coffee_houses=coffee_houses)
     nearest_5 = sorted(coffee_with_distance, key=coffee_near_me)[:5]
-    lantitude, longitude = my_coordinates
-    map_html((longitude, lantitude), nearest_5)
+    longitude, lantitude = my_coordinates
+    map_html((lantitude, longitude), nearest_5)
     app.run('0.0.0.0')
