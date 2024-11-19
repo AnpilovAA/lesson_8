@@ -5,7 +5,7 @@ from config import KEY
 from utils import fetch_coordinates
 from server import app
 
-from json import loads
+from json import load
 
 
 def get_all_info_coffee(all_info_coffee: dict) -> list:
@@ -67,8 +67,7 @@ def map_html(my_coord: tuple, nearest_5: list):
 
 if __name__ == "__main__":
     with open('coffee.json', "r", encoding='cp1251') as read_json:
-        coffee_json = read_json.read()
-        coffee = loads(coffee_json)
+        coffee = load(read_json)
     coffee_houses = get_all_info_coffee(coffee)
     my_coordinates = fetch_coordinates(KEY, input("Гдк вы находитесь?: "))
     coffee_with_distance = combine_data(coffee_houses=coffee_houses)
