@@ -20,11 +20,6 @@ def get_all_info_coffee(all_info_coffee: dict) -> list:
     return accumulate
 
 
-def define_my_coordinates() -> tuple:
-    longitude_luntitude = fetch_coordinates(KEY, input("Гдк вы находитесь?: "))
-    return longitude_luntitude
-
-
 def combine_data(coffee_houses: list) -> tuple:
     coffee_house_with_distance = []
     for coffee_house in coffee_houses:
