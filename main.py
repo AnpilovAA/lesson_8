@@ -23,8 +23,9 @@ def get_all_info_coffee(all_info_coffee: dict) -> list:
 def combine_data(coffee_houses: list) -> tuple:
     coffee_house_with_distance = []
     for coffee_house in coffee_houses:
-        coffee_location = (coffee_house["longitude"], coffee_house["latitude"])
-        distance_km = distance(my_coordinates, coffee_location).km
+        coffee_location = (coffee_house["latitude"], coffee_house["longitude"])
+        my_lat_log = (my_coordinates[1], my_coordinates[0])
+        distance_km = distance(my_lat_log, coffee_location).km
         coffee_house.update(distance=distance_km)
         coffee_house_with_distance.append(coffee_house)
     return coffee_house_with_distance
